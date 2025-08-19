@@ -1,0 +1,36 @@
+name: Deploy to Github pages
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Install Bun
+              uses: oven-sh/setup-bun@v1
+
+            - name: Install deps
+              run: bun i
+
+            - name: Build
+              run: |
+                  cp .env.example .env.local
+                  bun run build
+                  bun run build:server
+
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
+                  cname: cowcord.notacow.fr

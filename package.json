@@ -1,0 +1,34 @@
+{
+	"name": "cowcord-site",
+	"private": true,
+	"type": "module",
+	"packageManager": "bun@1.2.19",
+	"scripts": {
+		"build": "vite build",
+		"build:server": "vite build -c adapters/static/vite.config.ts",
+		"dev": "vite dev --mode ssr",
+		"format": "prettier --ignore-path .eslintignore --write . && oxlint --fix .",
+		"lint": "oxlint --react-plugin .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@builder.io/qwik": "^1.15.0",
+		"@builder.io/qwik-city": "^1.15.0",
+		"@qwikest/icons": "^0.0.13",
+		"flowbite-qwik": "^1.1.2"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.0.0",
+		"@types/bun": "latest",
+		"globals": "16.0.0",
+		"oxlint": "^1.9.0",
+		"prettier": "3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"tailwindcss": "^4.0.0",
+		"typescript": "5.4.5",
+		"typescript-eslint": "8.26.1",
+		"typescript-plugin-css-modules": "latest",
+		"vite": "7.1.2",
+		"vite-tsconfig-paths": "^5.1.4"
+	}
+}

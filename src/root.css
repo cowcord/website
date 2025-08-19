@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'ComicSans';
+	src: url('/fonts/ComicSans.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MonoSans';
+	src: url('/fonts/ComicSansMono.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.text-mono {
+	font-family: 'MonoSans', monospace;
+}
+
+button {
+	cursor: pointer;
+}
+
+code {
+	font-family: 'MonoSans', sans-serif;
+}
+
+@layer base {
+	:root {
+		font-family: 'ComicSans', sans-serif;
+
+		--radius: 0.5rem;
+
+		--background: hsl(188, 11%, 6%);
+		--foreground: hsl(0, 0%, 95%);
+
+		--border: hsl(188, 11%, 10%);
+		--card: hsl(200, 11%, 7%);
+	}
+}
+
+@theme inline {
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+
+	--color-border: var(--border);
+	--color-card: var(--card);
+
+	--spacing-8xl: 90rem;
+
+	--font-emoji: 'Twemoji Mozilla', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji',
+		'EmojiOne Color', 'Android Emoji', inherit;
+}
