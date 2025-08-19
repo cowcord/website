@@ -1,24 +1,23 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { Card } from '@comp/card';
-import { UAParser } from 'ua-parser-js';
+import { DownloadPageParams } from './download';
+import { getComputerInfo } from '@lib/utils/computer';
 
 export default component$(() => {
-	const os = useSignal<{ name?: string; version?: string }>({});
-  	const arch = useSignal<{ architecture?: string }>({});
+	const { os, arch } = getComputerInfo();
 
-  useVisibleTask$(() => {
-    const ua = new UAParser(window.navigator.userAgent);
-    const osData = ua.getOS();
-    const cpuData = ua.getCPU();
+	const test: DownloadPageParams = {
+		os: os.name,
+		arch: arch.architecture,
+	};
 
-	os.value = { name: osData.name, version: osData.version };
-    arch.value = { architecture: cpuData.architecture };
-  });
+	const downloadParams = new URLSearchParams(Object.entries(test).filter(([_, v]) => v !== undefined));
 
 	return (
-		<div class="bg-background flex h-[1000px] w-screen flex-col items-center justify-center">
-			<h1 class="text-white text-3xl mb-5">Imagine a world where Discord was good...</h1>
-			<Card title={`Download for ${os.value.name}`} href={`/download?os=${os.value.name}&arch=${arch.value.architecture}`} />
+		<div class="bg-background flex h-[1000px] w-screen flex-col items-center">
+			{/* todo: icon */}
+			<h1 class="mt-[20rem] mb-5 text-3xl text-white">Robust Discord client</h1>
+			<Card title={`Download for ${os.name}`} href={`/download?${downloadParams.toString()}`} />
 		</div>
 	);
 });

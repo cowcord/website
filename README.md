@@ -2,8 +2,8 @@
 
 #### Prerequisites
 
-- Git
-- Bun v1.2.19+
+-   Git
+-   Bun v1.2.19+
 
 #### Steps
 

@@ -8,12 +8,14 @@ const navLinks = [
 	{ href: import.meta.env.PUBLIC_DONATION_URL ?? '', label: 'Donate' },
 ];
 
-const Icons = (props: { size: Size, scrolled: boolean }) => (
-	<div class={{
-		"flex flex-row": true,
-		"space-x-3": !props.scrolled,
-		"space-x-2": props.scrolled,
-	}}>
+const Icons = (props: { size: Size; scrolled: boolean }) => (
+	<div
+		class={{
+			'flex flex-row': true,
+			'space-x-3': !props.scrolled,
+			'space-x-2': props.scrolled,
+		}}
+	>
 		<SiDiscord width={props.size} height={props.size} class="transition-all duration-300 hover:text-white/40" />
 		<SiGithub width={props.size} height={props.size} class="transition-all duration-300 hover:text-white/40" />
 	</div>
@@ -60,15 +62,15 @@ export const Header = component$(() => {
 							'text-2xl': !scrolled.value,
 							'text-lg': scrolled.value,
 						}}
-						href='/'
+						href="/"
 					>
 						cowcord
 					</a>
 					<nav
 						class={{
 							'transition-all duration-300': true,
-							'text-md -ml-14 space-x-6': !scrolled.value,
-							'-ml-12 space-x-2 text-sm': scrolled.value,
+							'text-md -ml-10 space-x-6': !scrolled.value,
+							'-ml-8 space-x-2 text-sm': scrolled.value,
 						}}
 					>
 						{navLinks.map(({ href, label }) => (
