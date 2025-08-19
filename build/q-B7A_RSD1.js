@@ -1,0 +1,1 @@
+import{M as e}from"./q-CDL_Uzrq.js";import"./q-CF2Nn7YE.js";const n=()=>e("div",null,{class:"bg-background flex h-screen w-screen flex-col items-center justify-center"},e("h1",null,{class:"text-foreground text-6xl md:text-6xl"},"not a cow",3,null),3,"dW_0");export{n as s_jxBQIXfQxBA};
