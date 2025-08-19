@@ -8,10 +8,14 @@ const navLinks = [
 	{ href: '/donate', label: 'Donate' },
 ];
 
-const Icons = ({ size }: { size: Size }) => (
-	<div class="flex flex-row space-x-2">
-		<SiDiscord width={size} height={size} class="transition-all duration-300 hover:text-white/40" />
-		<SiGithub width={size} height={size} class="transition-all duration-300 hover:text-white/40" />
+const Icons = (props: { size: Size, scrolled: boolean }) => (
+	<div class={{
+		"flex flex-row": true,
+		"space-x-3": !props.scrolled,
+		"space-x-2": props.scrolled,
+	}}>
+		<SiDiscord width={props.size} height={props.size} class="transition-all duration-300 hover:text-white/40" />
+		<SiGithub width={props.size} height={props.size} class="transition-all duration-300 hover:text-white/40" />
 	</div>
 );
 
@@ -72,7 +76,7 @@ export const Header = component$(() => {
 							</a>
 						))}
 					</nav>
-					<Icons size={iconSize} />
+					<Icons size={iconSize} scrolled={scrolled.value} />
 				</div>
 			</div>
 		</header>
