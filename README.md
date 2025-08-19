@@ -1,20 +1,17 @@
-# My Website
-
-My website, built with [Qwik] and [Tailwind]
-
 ## To run
 
 #### Prerequisites
 
--   Bun v1.2.19+
+- Git
+- Bun v1.2.19+
 
 #### Steps
 
 -   Clone repository
 
 ```sh
-git clone https://github.com/not-a-cowfr/website cow-website
-cd cow-website
+git clone https://github.com/cowcord/website cowcord-site
+cd cowcord-site
 ```
 
 -   Install deps
