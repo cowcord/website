@@ -1,1 +1,0 @@
-import{M as e}from"./q-Br-N3doq.js";import"./q-CF2Nn7YE.js";const s=()=>e("div",null,{class:"bg-background flex h-[1500px] w-screen flex-col items-center justify-center"},e("p",null,{class:"text-white"},"test",3,null),3,"dW_0");export{s as s_jxBQIXfQxBA};
