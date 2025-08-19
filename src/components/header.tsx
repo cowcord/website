@@ -5,7 +5,7 @@ const navLinks = [
 	{ href: '/download', label: 'Download' },
 	{ href: '/plugins', label: 'Plugins' },
 	{ href: '/faq', label: 'FAQ' },
-	{ href: '/donate', label: 'Donate' },
+	{ href: import.meta.env.PUBLIC_DONATION_URL ?? '', label: 'Donate' },
 ];
 
 const Icons = (props: { size: Size, scrolled: boolean }) => (
@@ -54,15 +54,16 @@ export const Header = component$(() => {
 					}}
 				>
 					{/* will replace this text with a simple logo icon when i eventually make one */}
-					<div
+					<a
 						class={{
 							'font-bold transition-all duration-300': true,
 							'text-2xl': !scrolled.value,
 							'text-lg': scrolled.value,
 						}}
+						href='/'
 					>
 						cowcord
-					</div>
+					</a>
 					<nav
 						class={{
 							'transition-all duration-300': true,
