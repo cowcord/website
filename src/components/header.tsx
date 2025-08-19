@@ -1,13 +1,31 @@
 import { component$, Size, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import { SiDiscord, SiGithub } from '@qwikest/icons/simpleicons';
 
+const navLinks = [
+	{ href: '/download', label: 'Download' },
+	{ href: '/plugins', label: 'Plugins' },
+	{ href: '/faq', label: 'FAQ' },
+	{ href: '/donate', label: 'Donate' },
+];
+
+const Icons = ({ size }: { size: Size }) => (
+	<div class="flex flex-row space-x-2">
+		<SiDiscord width={size} height={size} class="transition-all duration-300 hover:text-white/40" />
+		<SiGithub width={size} height={size} class="transition-all duration-300 hover:text-white/40" />
+	</div>
+);
+
 export const Header = component$(() => {
 	const scrolled = useSignal(false);
+	const isMobile = useSignal(false);
 
 	useVisibleTask$(() => {
+		isMobile.value = window.innerWidth < 728;
+
 		const onScroll = () => {
-			scrolled.value = window.scrollY > 67; // tuff
+			scrolled.value = window.scrollY > 67 /* tuff */ && !isMobile.value;
 		};
+
 		window.addEventListener('scroll', onScroll);
 		return () => window.removeEventListener('scroll', onScroll);
 	});
@@ -15,7 +33,7 @@ export const Header = component$(() => {
 	const iconSize = scrolled.value ? 20 : (30 as Size);
 
 	return (
-		<header class="flex justify-center">
+		<header class="hidden justify-center md:flex">
 			<div
 				class={{
 					'text-muted-variant border-muted/20 fixed top-0 z-9999 bg-transparent backdrop-blur-xs transition-all duration-300':
@@ -43,20 +61,18 @@ export const Header = component$(() => {
 					</div>
 					<nav
 						class={{
-							'space-x-6 transition-all duration-300': true,
-							'text-md -ml-14': !scrolled.value,
-							'-ml-12 text-sm': scrolled.value,
+							'transition-all duration-300': true,
+							'text-md -ml-14 space-x-6': !scrolled.value,
+							'-ml-12 space-x-2 text-sm': scrolled.value,
 						}}
 					>
-						<a href="/download">Download</a>
-						<a href="/plugins">Plugins</a>
-						<a href="/faq">FAQ</a>
-						<a href="/donate">Donate</a>
+						{navLinks.map(({ href, label }) => (
+							<a class="transition-all duration-300 hover:text-white/40" key={href} href={href}>
+								{label}
+							</a>
+						))}
 					</nav>
-					<div class="flex flex-row space-x-2">
-						<SiDiscord width={iconSize} height={iconSize} class="transition-all duration-300" />
-						<SiGithub width={iconSize} height={iconSize} class="transition-all duration-300" />
-					</div>
+					<Icons size={iconSize} />
 				</div>
 			</div>
 		</header>
