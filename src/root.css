@@ -44,6 +44,7 @@ body {
 		--foreground: hsl(0, 0%, 95%);
 
 		--muted: hsl(217, 20%, 15%);
+		--muted-foreground: hsl(217, 20%, 75%);
 		--muted-variant: hsl(217, 20%, 30%);
 
 		--border: hsl(188, 11%, 10%);
@@ -70,6 +71,7 @@ body {
 	--color-foreground: var(--foreground);
 
 	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
 	--color-muted-variant: var(--muted-variant);
 
 	--color-border: var(--border);

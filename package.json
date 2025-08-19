@@ -15,7 +15,8 @@
 		"@builder.io/qwik": "^1.15.0",
 		"@builder.io/qwik-city": "^1.15.0",
 		"@qwikest/icons": "^0.0.13",
-		"flowbite-qwik": "^1.1.2"
+		"flowbite-qwik": "^1.1.2",
+		"ua-parser-js": "^2.0.4"
 	},
 	"devDependencies": {
 		"@tailwindcss/vite": "^4.0.0",
