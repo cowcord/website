@@ -26,6 +26,14 @@ code {
 	font-family: 'MonoSans', sans-serif;
 }
 
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overscroll-behavior: none;
+}
+
 @layer base {
 	:root {
 		font-family: 'ComicSans', sans-serif;
@@ -35,10 +43,22 @@ code {
 		--background: hsl(188, 11%, 6%);
 		--foreground: hsl(0, 0%, 95%);
 
+		--muted: hsl(217, 20%, 15%);
+		--muted-variant: hsl(217, 20%, 30%);
+
 		--border: hsl(188, 11%, 10%);
 		--card: hsl(200, 11%, 7%);
 	}
 }
+
+/* .anim {
+	equal to transition-all
+	transition-property: all;
+	transition-timing-function: ease-in-out;
+
+	equal to duration-300
+	transition-duration: 300;
+} */
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
@@ -48,6 +68,9 @@ code {
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+
+	--color-muted: var(--muted);
+	--color-muted-variant: var(--muted-variant);
 
 	--color-border: var(--border);
 	--color-card: var(--card);

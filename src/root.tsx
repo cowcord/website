@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { QwikCityProvider, RouterOutlet } from '@builder.io/qwik-city';
 
 import './root.css';
+import { Header } from '@comp/header';
 
 export default component$(() => {
 	return (
@@ -12,6 +13,7 @@ export default component$(() => {
 				<link rel="icon" type="image/png" href="/favicon.png" />
 			</head>
 			<body lang="en">
+				<Header />
 				<RouterOutlet />
 			</body>
 		</QwikCityProvider>
