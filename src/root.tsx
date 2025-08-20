@@ -3,6 +3,7 @@ import { QwikCityProvider, RouterOutlet } from '@builder.io/qwik-city';
 
 import './root.css';
 import { Header } from '@comp/header';
+import { Footer } from '@comp/footer';
 
 export default component$(() => {
 	return (
@@ -15,6 +16,7 @@ export default component$(() => {
 			<body lang="en">
 				<Header />
 				<RouterOutlet />
+				<Footer />
 			</body>
 		</QwikCityProvider>
 	);
