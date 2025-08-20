@@ -14,7 +14,7 @@ export default component$(() => {
 	const downloadParams = new URLSearchParams(Object.entries(test).filter(([_, v]) => v !== undefined));
 
 	return (
-		<div class="bg-background flex h-[1000px] w-screen flex-col items-center">
+		<div class="flex flex-col items-center">
 			{/* todo: icon */}
 			<h1 class="mt-[20rem] mb-5 text-3xl text-white">Robust Discord client</h1>
 			<Card title={`Download for ${os.name}`} href={`/download?${downloadParams.toString()}`} />
