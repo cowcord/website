@@ -1,18 +1,28 @@
 import { useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import { UAParser } from 'ua-parser-js';
+
+export type supportedOS = 'Windows' | 'MacOS' | debianBasedOS;
+
+export type debianBasedOS = 'Debian' | 'Mint' | 'Ubuntu' | 'Xubuntu';
 
 export function getComputerInfo() {
-	const os = useSignal<{ name?: string; version?: string }>({});
-	const arch = useSignal<{ architecture?: string }>({});
+	const os = useSignal<string | undefined>();
+	const arch = useSignal<string | undefined>();
 
+	// if you get a crap ton of errors here just ignore it, it works fine
 	useVisibleTask$(() => {
-		const ua = new UAParser(window.navigator.userAgent);
-		os.value = ua.getOS();
-		arch.value = ua.getCPU();
+		const ua =
+			navigator.userAgentData && navigator.userAgentData.platform
+				? navigator.userAgentData.platform
+				: navigator.userAgent;
+
+		os.value = ua.charAt(0).toUpperCase() + ua.slice(1);
+
+		if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+			navigator.userAgentData.getHighEntropyValues(['architecture']).then((ua: { architecture: string }) => {
+				arch.value = ua.architecture;
+			});
+		}
 	});
 
-	return {
-		os: { name: os.value.name, version: os.value.version },
-		arch: { architecture: arch.value.architecture },
-	};
+	return [os, arch];
 }
