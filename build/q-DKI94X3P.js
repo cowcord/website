@@ -1,0 +1,1 @@
+import{M as o}from"./q-BVD9PPZr.js";import"./q-DFSUiNZB.js";const e=()=>o("footer",null,{class:"bg-muted text-muted-foreground/70 flex w-full justify-center py-4"},o("p",null,{class:"text-sm"},"Discord is a trademark of Discord Inc. Cowcord is not affiliated with or endorsed by Discord Inc.",3,null),3,"Nm_0");export{e as s_3WlCeVPzLuo};
