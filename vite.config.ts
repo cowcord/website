@@ -6,19 +6,20 @@ import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: '.' }), tailwindcss()],
 	optimizeDeps: {
 		exclude: [],
 	},
+	plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: '.' }), tailwindcss()],
 	resolve: {
 		alias: {
 			'@comp': path.resolve('./src/components'),
 			'@lib': path.resolve('./src/lib'),
+			'@shared/*': path.resolve('./shared'),
 		},
 	},
 	server: {
 		headers: {
-			'Cache-Control': 'public, max-age=0',
+			'Cache-Control': 'public, max-age=31536000, immutable',
 		},
 	},
 	preview: {

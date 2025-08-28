@@ -26,7 +26,6 @@ jobs:
               run: |
                   cp .env.example .env.local
                   bun run build
-                  bun run build:server
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3

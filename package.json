@@ -4,12 +4,14 @@
 	"type": "module",
 	"packageManager": "bun@1.2.19",
 	"scripts": {
-		"build": "vite build",
-		"build:server": "vite build -c adapters/static/vite.config.ts",
-		"dev": "vite dev --mode ssr",
+		"build": "qwik build",
+		"build.client": "vite build",
+		"build.server": "bunx --bun vite build -c adapters/static/vite.config.ts",
+		"clean": "rm -rf dist/ server/ node_modules/ bun.lock",
+		"dev": "bunx --bun vite dev --mode ssr",
 		"format": "prettier --ignore-path .eslintignore --write . && oxlint --fix .",
 		"lint": "oxlint --react-plugin .",
-		"preview": "vite preview"
+		"preview": "bunx --bun vite build --ssr src/entry.preview.tsx && vite preview"
 	},
 	"dependencies": {
 		"@builder.io/qwik": "^1.15.0",

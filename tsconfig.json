@@ -20,9 +20,10 @@
 		"baseUrl": ".",
 		"paths": {
 			"@comp/*": ["src/components/*"],
-			"@lib/*": ["src/lib/*"]
+			"@lib/*": ["src/lib/*"],
+			"@shared/*": ["shared/*"]
 		},
 		"plugins": [{ "name": "typescript-plugin-css-modules" }]
 	},
-	"include": ["src", "./*.d.ts", "./*.config.ts"]
+	"include": ["src", "./*.d.ts", "./*.ts"]
 }

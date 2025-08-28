@@ -1,7 +1,9 @@
 import { component$, useVisibleTask$ } from '@builder.io/qwik';
-import { routeLoader$ } from '@builder.io/qwik-city';
-import { Card } from '@comp/card';
+import { CardDropdown, CardDropdownOptionsProps } from '@comp/card';
 import { getComputerInfo } from '@lib/utils/computer';
+import { getReleases, GitHubRelease } from '@lib/utils/releases';
+
+export { getReleases } from '@lib/utils/releases';
 
 export interface DownloadPageParams {
 	os?: string;
@@ -17,26 +19,28 @@ export default component$(() => {
 		os.value = params.get('os') ?? os.value;
 	});
 
-	const tags = getReleaseTags().value;
+	const releases: GitHubRelease[] = getReleases().value;
+
+	let options: CardDropdownOptionsProps[] = [];
+
+	if (Array.isArray(releases)) {
+		releases.map((r) => {
+			options.push({
+				name: r.tag_name,
+				onclick: r.assets[0].url, // todo: get correct asset
+			});
+		});
+	}
 
 	return (
 		<div class="flex flex-col">
 			<h1 class="text-bold mt-[10rem] ml-[10rem] text-4xl text-white" data-for-arch="x64">
 				Download cowcord{os.value ? ` for ${os.value}` : ''}
 			</h1>
-			<Card
+			<CardDropdown
 				title={`Download${os.value ? ` for ${os.value}${arch.value ? ` ${os.value === 'MacOS' ? 'Silicon' : arch.value}` : ''}` : ''}`}
-				href=""
+				options={options}
 			/>
 		</div>
 	);
-});
-
-// download file format:
-// https://github.com/cowcord/cowcord/releases/download/<tag name>/<file name>
-
-const getReleaseTags = routeLoader$(async () => {
-  const resp = await fetch('https://api.github.com/repos/cowcord/cowcord/tags');
-  const data = await resp.json();
-  return data.map((tag: { name: string }) => tag.name);
 });

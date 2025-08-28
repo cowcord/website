@@ -12,7 +12,8 @@ export default extendConfig(baseConfig, () => {
 		},
 		plugins: [
 			staticAdapter({
-				origin: 'https://notacow.fr',
+				origin: 'https://cowcord.notacow.fr',
+				maxWorkers: 1, // fix build hanging when generating html files
 			}),
 		],
 	};

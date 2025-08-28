@@ -5,7 +5,7 @@ const navLinks = [
 	{ href: '/download', label: 'Download' },
 	{ href: '/plugins', label: 'Plugins' },
 	{ href: '/faq', label: 'FAQ' },
-	{ href: import.meta.env.PUBLIC_DONATION_URL ?? '', label: 'Donate' },
+	{ href: 'https://ko-fi.com/not_a_cow', label: 'Donate' },
 ];
 
 const Icons = (props: { size: Size; scrolled: boolean }) => (
